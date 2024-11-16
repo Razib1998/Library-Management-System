@@ -11,7 +11,7 @@ const sendResponse = <T>(
       limit: number;
       total: number;
     };
-    data: T;
+    data: T | null | undefined;
   }
 ) => {
   res.status(jsonData.statusCode).json({

@@ -2,18 +2,18 @@ import { RequestHandler } from "express";
 import catchAsync from "../../Shared/catchAsync";
 import sendResponse from "../../Shared/sendResponse";
 import { HttpStatus } from "http-status-ts";
-import { BorrowedServices } from "./borrow.service";
+import { ReturnServices } from "./return.service";
 
-const borrowedBook: RequestHandler = catchAsync(async (req, res) => {
-  const result = await BorrowedServices.borrowBook(req.body);
+const returnBook: RequestHandler = catchAsync(async (req, res) => {
+  const result = await ReturnServices.returnBook(req.body);
   sendResponse(res, {
     statusCode: HttpStatus.OK,
     success: true,
-    message: "Book borrowed  Successfully!",
+    message: "Book returned  Successfully!",
     data: result,
   });
 });
 
-export const BorrowedControllers = {
-  borrowedBook,
+export const ReturnControllers = {
+  returnBook,
 };

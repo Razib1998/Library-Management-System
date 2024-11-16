@@ -35,13 +35,13 @@ model Member {
 }
 
 model BorrowRecord {
-  borrowId   String   @id @default(uuid())
-  borrowDate DateTime
-  returnDate DateTime
+  borrowId   String    @id @default(uuid())
+  borrowDate DateTime  @default(now())
+  returnDate DateTime?
   bookId     String
   memberId   String
-  Book       Book     @relation(fields: [bookId], references: [bookId])
-  Member     Member   @relation(fields: [memberId], references: [memberId])
+  Book       Book      @relation(fields: [bookId], references: [bookId])
+  Member     Member    @relation(fields: [memberId], references: [memberId])
 
   @@map("borrowRecords")
 }
