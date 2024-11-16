@@ -1,9 +1,14 @@
 import express, { NextFunction, Request, Response, urlencoded } from "express";
 import { BookRoutes } from "./app/modules/Book/book.routes";
+import { MemberRoutes } from "./app/modules/Member/member.routes";
+import globalErrorHandler from "./app/Middlewares/globalErrorHandler";
+import cors from "cors";
+import notFound from "./app/Middlewares/notFound";
+import router from "./app/routes";
 
 const app = express();
 
-const port = 3000;
+app.use(cors());
 
 // Parsers
 
@@ -16,5 +21,8 @@ app.get("/", (req: Request, res: Response) => {
   });
 });
 
-app.use("/api/books", BookRoutes);
+app.use("/api", router);
+
+app.use(globalErrorHandler);
+// app.use(notFound);
 export default app;

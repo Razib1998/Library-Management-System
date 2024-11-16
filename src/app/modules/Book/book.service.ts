@@ -2,11 +2,11 @@ import { Book } from "@prisma/client";
 import prisma from "../../Shared/prisma";
 
 const createBook = async (payload: any) => {
-  const isExistsBook = await prisma.book.findFirstOrThrow({
-    where: {
-      title: payload?.title,
-    },
-  });
+  // const isExistsBook = await prisma.book.findFirstOrThrow({
+  //   where: {
+  //     title: payload?.title,
+  //   },
+  // });
 
   const result = await prisma.book.create({
     data: payload,
